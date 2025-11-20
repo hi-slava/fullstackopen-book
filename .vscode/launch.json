@@ -1,0 +1,68 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Main Process",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/index.js",
+      "args": [
+        "epub",
+        "--lang=en",
+        "--type=full",
+        "--emoji=replace"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    {
+      "name": "Debug Test",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/test-refactor.js",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "env": {
+        "NODE_ENV": "test"
+      }
+    },
+    {
+      "name": "Debug Parts Command",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/index.js",
+      "args": [
+        "parts",
+        "--lang=en"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "name": "Debug Lessons Command",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/index.js",
+      "args": [
+        "lessons"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    }
+  ]
+}

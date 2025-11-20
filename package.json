@@ -1,0 +1,35 @@
+{
+  "name": "fso-to-book",
+  "version": "1.0.0",
+  "type": "module",
+  "imports": {
+    "#utils/*": "./utils/*.js",
+    "#config": "./config.js"
+  },
+  "scripts": {
+    "parts": "node index.js parts",
+    "lessons": "node index.js lessons",
+    "images": "node index.js images",
+    "clean": "node index.js clean",
+    "covers": "node index.js covers",
+    "epub": "node index.js epub",
+    "pdf": "node index.js pdf",
+    "full-epub": "npm-run-all parts lessons images clean covers epub",
+    "full-pdf": "npm-run-all parts lessons images clean covers pdf",
+    "epub:check": "epubcheck ./output/'FullStackOpen 0–13.epub'",
+    "test": "node test-refactor.js"
+  },
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "epub-gen-memory": "^1.1.2",
+    "jsdom": "^26.1.0",
+    "node-emoji": "^2.2.0",
+    "node-fetch": "^3.3.2",
+    "puppeteer-core": "^24.9.0",
+    "sanitize-html": "^2.17.0"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "puppeteer": "^24.9.0"
+  }
+}

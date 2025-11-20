@@ -1,0 +1,107 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Test Components",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "test"
+      ],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Generate Full EPUB",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "full-epub"
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Generate Full PDF",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "full-pdf"
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Fetch Course Structure",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "parts"
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Download Lessons",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "lessons"
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Clean HTML",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "clean"
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
