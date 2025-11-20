@@ -2,18 +2,16 @@
 
 A Node.js CLI tool to convert the Full Stack Open course into EPUB or PDF formats with support for multiple languages, export types, and content customization.
 
+## Ready to grab books
+
+- [Download generated Full Stack Open books](./downloads/)
+
 ## 🚀 Features
 
 - Multi-language support (English, Finnish, Spanish, Chinese, French, Portuguese)
 - Flexible export types (full course, course-only, exercises-only)
 - Emoji handling (replace, remove, or keep)
 - Progress tracking and error handling
-
-## 📦 Installation
-
-```bash
-npm install
-```
 
 ## 🎯 Quick Start
 
@@ -26,6 +24,7 @@ npm install
 npm run full-epub
 
 # Generate full course PDF
+PDF may be a little buggy, I didn't have time to check and polish PDFs, but they seem to work perfectly fine.
 npm run full-pdf
 ```
 
@@ -52,7 +51,16 @@ npm run covers
 # 6. Export to EPUB or PDF
 npm run epub -- --lang=en --type=full --emoji=replace
 npm run pdf -- --lang=en --type=full --emoji=replace
+
+# 7. Check the last generated EPUB file using EPUBCheck (optional)
+npm run epub:check
 ```
+
+**Note:** [EPUBCheck](https://github.com/w3c/epubcheck) is required for the `epub:check` command to work.
+
+**Note:** To generate specific parts only, edit `utils/prepareBookContent.js` and modify the `start` and `end` variables (around line 142) to set the part range (0-indexed).
+
+**Note:** When generating specific parts, links to other parts may not work properly.
 
 ### CLI Options
 
@@ -60,9 +68,9 @@ npm run pdf -- --lang=en --type=full --emoji=replace
 
 All export commands support optional arguments:
 
-- `--lang=en|fi|zh|es|fr|ptbr` (default: `en`)
-- `--type=full|course_only|exercises_only` (default: `full`)
-- `--emoji=replace|remove|keep` (default: `replace`)
+- `--lang=en|fi|zh|es|fr|ptbr` (default: `en`) - I didn't test languages other than English properly, but they should work in theory.
+- `--type=full|course_only|exercises_only` (default: `full`) - When generating types other than full, links to other parts may not work properly.
+- `--emoji=replace|remove|keep` (default: `replace`) — some e-readers may not support emojis, so the default is to replace them with text.
 
 ### Examples
 
@@ -75,6 +83,8 @@ npm run pdf -- --lang=es --type=course_only --emoji=remove
 
 # Generate full course in Chinese
 npm run epub -- --lang=zh
+
+**Note:** Content is fetched and cleaned in the same directory no matter the language. If you want to generate a specific language, you need to delete the 'output/fetched-data/' directory before running the commands with a different name. Running commands will replace the existing files in that directory with the new ones.
 ```
 
 ## 🔧 Configuration
@@ -98,7 +108,7 @@ Languages are configured in `config.js`:
 
 ### Emoji Handling
 
-- `replace` - Convert emojis to text (e.g., ❤️ → :heart:)
+- `replace` - Convert emojis to text (e.g., ❤️ → `:heart:`)
 - `remove` - Strip all emojis
 - `keep` - Preserve emojis as-is
 
@@ -106,7 +116,7 @@ Languages are configured in `config.js`:
 
 This is a **Node.js command-line application** built with:
 
-- **Puppeteer** - Web scraping and browser automation
+- **Puppeteer** (puppeteer-core + puppeteer) - Web scraping and browser automation
 - **jsdom** - HTML parsing and DOM manipulation
 - **epub-gen-memory** - EPUB file generation
 - **sanitize-html** - HTML sanitization and cleaning

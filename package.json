@@ -16,7 +16,7 @@
     "pdf": "node index.js pdf",
     "full-epub": "npm-run-all parts lessons images clean covers epub",
     "full-pdf": "npm-run-all parts lessons images clean covers pdf",
-    "epub:check": "epubcheck ./output/'FullStackOpen 0–13.epub'",
+    "epub:check": "node index.js check",
     "test": "node test-refactor.js"
   },
   "dependencies": {

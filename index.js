@@ -6,6 +6,7 @@ import { downloadImages } from "#utils/commands/downloadImages";
 import { cleanHtml } from "#utils/commands/cleanHtml";
 import { exportToEpub } from "#utils/commands/exportToEpub";
 import { exportToPdf } from "#utils/commands/exportToPdf";
+import { checkLastEpub } from "#utils/commands/checkLastEpub";
 import { ConfigValidator } from "#utils/validators/ConfigValidator";
 
 const args = process.argv.slice(2);
@@ -37,24 +38,29 @@ async function run() {
       images: () => downloadImages(),
       clean: () => cleanHtml(),
       covers: () => createCovers(),
-      epub: () => exportToEpub({
+      epub: () =>
+        exportToEpub({
           language: cliOpts.lang,
           exportType: cliOpts.type,
           emojiMode: cliOpts.emoji,
-      }),
-      pdf: () => exportToPdf({
+        }),
+      pdf: () =>
+        exportToPdf({
           language: cliOpts.lang,
           exportType: cliOpts.type,
           emojiMode: cliOpts.emoji,
-      })
+        }),
+      check: () => checkLastEpub(),
     };
 
     if (commands[command]) {
       hey.info(`🔍 Running: ${command}`);
       await commands[command]();
     } else {
-        hey.warn("Unknown command.");
-        console.log("Usage: node index.js [parts|lessons|images|clean|covers|epub|pdf] [--lang=en|fi|es] [--type=full|course_only|exercises_only] [--emoji=replace|remove|keep]");
+      hey.warn("Unknown command.");
+      console.log(
+        "Usage: node index.js [parts|lessons|images|clean|covers|epub|pdf|check] [--lang=en|fi|zh|es|fr|ptbr] [--type=full|course_only|exercises_only] [--emoji=replace|remove|keep]"
+      );
     }
   } catch (err) {
     hey.error(err.message || err);

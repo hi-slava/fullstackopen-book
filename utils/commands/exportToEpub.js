@@ -20,10 +20,18 @@ export async function exportToEpub({
     const epub = new EPub(metadata, content);
     const buffer = await epub.genEpub();
 
-    const outputPath = path.resolve(
-      config.OUTPUT.root,
-      `FullStackOpen ${parts}.epub`
-    );
+    const filename = [
+      "FullStackOpen",
+      parts,
+      language,
+      exportType === config.EXPORT_TYPES.FULL ? null : exportType,
+      new Date().toISOString().slice(0, 10)
+    ]
+      .filter(Boolean)
+      .join(" ")
+      .replace(/\s+/g, " ")
+      .trim() + ".epub";
+    const outputPath = path.join(config.OUTPUT.root, filename);
     await fs.writeFile(outputPath, buffer);
 
     hey.success("✅ EPUB export complete!");

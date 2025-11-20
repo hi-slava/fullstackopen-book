@@ -13,8 +13,6 @@ dist-ssr/
 
 # Generated content
 output/
-*.epub
-*.pdf
 *.csv
 
 # Logs
